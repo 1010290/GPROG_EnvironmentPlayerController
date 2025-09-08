@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,7 @@ namespace Dio.FinalCharacterController
         public PlayerControls PlayerControls { get; private set; }
         public Vector2 MovementInput { get; private set; }
         public Vector2 LookInput { get; private set; }
+        public bool JumpPressed { get; private set; }
 
         //ENABLE PLAYER CONTROLS & PLAYER CONTROLS MAP
         private void OnEnable()
@@ -29,6 +31,11 @@ namespace Dio.FinalCharacterController
             PlayerControls.PlayerLocomotionMap.RemoveCallbacks(this);
         }
 
+        private void LateUpdate()
+        {
+            JumpPressed = false;
+        }
+
         public void OnMovement(InputAction.CallbackContext context)
         {
             MovementInput = context.ReadValue<Vector2>();
@@ -37,6 +44,17 @@ namespace Dio.FinalCharacterController
         public void OnLook(InputAction.CallbackContext context)
         {
             LookInput = context.ReadValue<Vector2>();
+        }
+
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            //IF JUMP NOT PERFORMED, RETURN (DONT DO ANYTHING)
+            if (!context.performed)
+            {
+                return;
+
+                JumpPressed = true;
+            }
         }
     }
 }
