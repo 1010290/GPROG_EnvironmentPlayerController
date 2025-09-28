@@ -26,16 +26,7 @@
                 {
                     "name": "Jump",
                     "type": "Button",
-                    "id": "382edd96-46da-45f5-b04d-75e861d0b5cc",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ToggleSprint",
-                    "type": "Button",
-                    "id": "213d9b37-6c22-4e7f-a1f9-4de54cbc1bb8",
+                    "id": "fd2e7901-3325-4043-ad46-01f711c54e42",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -111,23 +102,12 @@
                 },
                 {
                     "name": "",
-                    "id": "2f346590-07f4-40af-9520-6d0a1353a68b",
+                    "id": "76fe400c-c7dc-4576-9445-4f5f8ada9fa9",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "12660e61-5780-47db-a151-cea4ad7380ef",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToggleSprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -114,16 +114,7 @@ namespace Dio.FinalCharacterController
                 {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
-                    ""id"": ""382edd96-46da-45f5-b04d-75e861d0b5cc"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ToggleSprint"",
-                    ""type"": ""Button"",
-                    ""id"": ""213d9b37-6c22-4e7f-a1f9-4de54cbc1bb8"",
+                    ""id"": ""fd2e7901-3325-4043-ad46-01f711c54e42"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -199,23 +190,12 @@ namespace Dio.FinalCharacterController
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2f346590-07f4-40af-9520-6d0a1353a68b"",
+                    ""id"": ""76fe400c-c7dc-4576-9445-4f5f8ada9fa9"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""12660e61-5780-47db-a151-cea4ad7380ef"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ToggleSprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -229,7 +209,6 @@ namespace Dio.FinalCharacterController
             m_PlayerLocomotionMap_Movement = m_PlayerLocomotionMap.FindAction("Movement", throwIfNotFound: true);
             m_PlayerLocomotionMap_Look = m_PlayerLocomotionMap.FindAction("Look", throwIfNotFound: true);
             m_PlayerLocomotionMap_Jump = m_PlayerLocomotionMap.FindAction("Jump", throwIfNotFound: true);
-            m_PlayerLocomotionMap_ToggleSprint = m_PlayerLocomotionMap.FindAction("ToggleSprint", throwIfNotFound: true);
         }
 
         ~@PlayerControls()
@@ -313,7 +292,6 @@ namespace Dio.FinalCharacterController
         private readonly InputAction m_PlayerLocomotionMap_Movement;
         private readonly InputAction m_PlayerLocomotionMap_Look;
         private readonly InputAction m_PlayerLocomotionMap_Jump;
-        private readonly InputAction m_PlayerLocomotionMap_ToggleSprint;
         /// <summary>
         /// Provides access to input actions defined in input action map "PlayerLocomotionMap".
         /// </summary>
@@ -337,10 +315,6 @@ namespace Dio.FinalCharacterController
             /// Provides access to the underlying input action "PlayerLocomotionMap/Jump".
             /// </summary>
             public InputAction @Jump => m_Wrapper.m_PlayerLocomotionMap_Jump;
-            /// <summary>
-            /// Provides access to the underlying input action "PlayerLocomotionMap/ToggleSprint".
-            /// </summary>
-            public InputAction @ToggleSprint => m_Wrapper.m_PlayerLocomotionMap_ToggleSprint;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -376,9 +350,6 @@ namespace Dio.FinalCharacterController
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @ToggleSprint.started += instance.OnToggleSprint;
-                @ToggleSprint.performed += instance.OnToggleSprint;
-                @ToggleSprint.canceled += instance.OnToggleSprint;
             }
 
             /// <summary>
@@ -399,9 +370,6 @@ namespace Dio.FinalCharacterController
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
-                @ToggleSprint.started -= instance.OnToggleSprint;
-                @ToggleSprint.performed -= instance.OnToggleSprint;
-                @ToggleSprint.canceled -= instance.OnToggleSprint;
             }
 
             /// <summary>
@@ -463,13 +431,6 @@ namespace Dio.FinalCharacterController
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnJump(InputAction.CallbackContext context);
-            /// <summary>
-            /// Method invoked when associated input action "ToggleSprint" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-            /// </summary>
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnToggleSprint(InputAction.CallbackContext context);
         }
     }
 }

@@ -1,6 +1,9 @@
+/*
+Overview:   PlayerLocomotionInput Script is responsible for handling player input for movement, looking and jumping using 
+            the Unity Input System
+*/
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,8 +12,6 @@ namespace Dio.FinalCharacterController
     [DefaultExecutionOrder(-2)]
     public class PlayerLocomotionInput : MonoBehaviour, PlayerControls.IPlayerLocomotionMapActions
     {
-        [SerializeField] private bool holdToSprint = true;
-        public bool SprintToggledOn {  get; private set; }
         //INITIALIZE PLAYERCONTROLS INPUT using GET & SET METHODS (Get Variable w/o Setting Outside of Class)
         public PlayerControls PlayerControls { get; private set; }
         public Vector2 MovementInput { get; private set; }
@@ -26,6 +27,7 @@ namespace Dio.FinalCharacterController
             PlayerControls.PlayerLocomotionMap.Enable();
             PlayerControls.PlayerLocomotionMap.SetCallbacks(this);
         }
+
         //DISABLE PLAYER CONTROLS & PLAYER CONTROLS MAP WHEN NOT IN USE
         private void OnDisable()
         {
@@ -44,36 +46,22 @@ namespace Dio.FinalCharacterController
             MovementInput = context.ReadValue<Vector2>();
             print(MovementInput);
         }
-        
+
         public void OnLook(InputAction.CallbackContext context)
         {
             LookInput = context.ReadValue<Vector2>();
         }
 
-        public void OnToggleSprint(InputAction.CallbackContext context)
-        {
-            //IF HOLD SHIFT
-            if (context.performed)
-            {
-                SprintToggledOn = holdToSprint || !SprintToggledOn;
-            }
-            //CASE FOR RELEASING SHIFT KEY
-            else if (context.canceled)
-            {
-                SprintToggledOn = !holdToSprint && SprintToggledOn;
-            }
-        }
-
         public void OnJump(InputAction.CallbackContext context)
         {
-            //IF JUMP NOT PERFORMED, RETURN (DONT DO ANYTHING)
+            //if context.performed is not true (spacebar is not being hold), just return (don't do anything, don't do code below)
             if (!context.performed)
             {
                 return;
-
-                JumpPressed = true;
             }
+
+            JumpPressed = true;
+
         }
     }
 }
-
